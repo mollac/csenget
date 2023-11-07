@@ -10,8 +10,9 @@ A rovid.json a nálunk használt rövidített órák csengetési rendjét haszn�
  
 A days.json fájl, amiben a nap neve mellett az 1 vagy 0 lehet.
 
-  1 - csenget azon a napon
-  0 - nem csenget azon a napon
+ 1 - csenget azon a napon
+  
+ 0 - nem csenget azon a napon
 
 A json fájlok tetszőlegesen átírhatók, a formátum azonban fontos.
 Akár minden időponthoz lehet más mp3-at rendelni, vagy sorokat
