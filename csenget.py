@@ -15,28 +15,30 @@ def main(file_name):
         print(f'No data file {file_name}!')
         exit(-1)
 
+    try:
+        with open('days.json', 'r', encoding='utf-8') as f:
+            days = json.loads(f.read())
+    except FileNotFoundError:
+        print(f'No file days.json!')
+        exit(-1)
+
     print(f"\nUsing {file_name} as input.\n")
 
-    for k,v in times.items():
-        print(k,v)
+    for k, v in times.items():
+        print(k, v)
     while True:
-        # A jelenlegi idő lekérdezése
         now = datetime.datetime.now()
 
-        # Az óra és percek kiolvasása a dictionaryből
+        day = now.strftime("%A")
         hour = now.hour
         minute = now.minute
         sec = now.second
 
-        # A hang lejátszása, ha a jelenlegi idő benne van a dictionaryben és hétköznap van
-
-        current_time = f"{hour:02}:{minute:02}:{sec:02}"
+        current_time = f"{day} {days[day]} - {hour:02}:{minute:02}:{sec:02}"
         print(f"\r{current_time}", end=f"\r", flush=True)
-        if current_time in times and now.weekday() < 6:
-            # A hangfájl betöltése
+        if current_time in times and days[day] == 1:
             pygame.mixer.music.load(times[current_time])
             pygame.mixer.music.play()
-            # A hang lejátszásának várása
             while pygame.mixer.music.get_busy():
                 pass
         time.sleep(1)
