@@ -34,8 +34,8 @@ def main(file_name):
         minute = now.minute
         sec = now.second
 
-        current_time = f"{day} {days[day]} - {hour:02}:{minute:02}:{sec:02}"
-        print(f"\r{current_time}", end=f"\r", flush=True)
+        current_time = f"{hour:02}:{minute:02}:{sec:02}"
+        print(f"\r{day}: {days[day]} - {current_time}", end=f"\r", flush=True)
         if current_time in times and days[day] == 1:
             pygame.mixer.music.load(times[current_time])
             pygame.mixer.music.play()
