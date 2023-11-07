@@ -8,7 +8,8 @@ valamint az adott időponthoz rendelt mp3 fájlt.
 
 A rovid.json a nálunk használt rövidített órák csengetési rendjét használja, ekkor az indítás: python csenget.py rovid.json
  
-A days.json fájl, amiben a nap neve mellett az 1 vagy 0 lehet. 
+A days.json fájl, amiben a nap neve mellett az 1 vagy 0 lehet.
+
   1 - csenget azon a napon
   0 - nem csenget azon a napon
 
