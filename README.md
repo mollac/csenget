@@ -1,19 +1,43 @@
-# csenget
-ki- becsengető script
+# Csengő vezérlőpult
 
-Használat: python csenget.py
+Színes termináls felület (TUI) az iskolai csengő kezeléséhez.
 
-Működése: ha nem adunk meg paramétert, a normal.json fájlt olvassa be, ami a ki- illetve a becsengetések idejét tartalmazza 
-valamint az adott időponthoz rendelt mp3 fájlt.
+## Telepítés
 
-A rovid.json a nálunk használt rövidített órák csengetési rendjét használja, ekkor az indítás: python csenget.py rovid.json
- 
-A days.json fájl, amiben a nap neve mellett az 1 vagy 0 lehet.
+```powershell
+pip install -r requirements.txt
+```
 
- 1 - csenget azon a napon
-  
- 0 - nem csenget azon a napon
+## Indítás
 
-A json fájlok tetszőlegesen átírhatók, a formátum azonban fontos.
-Akár minden időponthoz lehet más mp3-at rendelni, vagy sorokat
-törölni, ha kevesebb időpont van.
+```powershell
+python tui.py
+```
+
+## Lehetőségek a felületen
+
+| Vezérlő | Mit csinál |
+|---|---|
+| **Csengő: KI/BE** kapcsoló | elindítja / leállítja a háttérben futó csengő folyamatot |
+| **▶ Indítás / ■ Leállítás** | ugyanaz gombokkal |
+| **↻ Újratöltés** | újraolvassa a beállítás- és órarendfájlokat |
+| **◈ Próba csengés** | lejátssza a kijelölt időponthoz tartozó hangot |
+| **Óratípus** | **Normál órák** (alapértelmezett) és **Rövidített órák** között vált |
+| **Időpont + Hang → ＋ Hozzáadás** | új KI/BE csengés felvétele – *meglévő időpontot nem enged felvenni* |
+| **✎ Módosítás** | a kijelölt sor időpontjának és hangjának átírása (ütközést itt is tilt) |
+| **✕ Törlés** | a kijelölt időpont törlése |
+| **Hangok / Alkalmaz** | a kijelölt időponthoz rendeli a hangfájlt |
+| **▶ Hallgasd** | meghallgatás |
+| **Napi bekapcsolás** | napok ki/be kapcsolása (zöld = csörög, szürke = nem) |
+
+## Billentyűk
+
+`Ctrl+S` Ki/Bekapcsolás · `Ctrl+T` Óratípus · `Ctrl+R` Újratöltés · `Ctrl+P` Próba csengés · `Ctrl+Q` Kilépés
+
+## Fájlok
+
+- `settings.json` – óratípus (`normal` / `rovid`) és alapértelmezett hang
+- `normal.json`, `rovid.json` – `<időpont>: <hangfájl>` párok
+- `days.json` – mely napokon csörögjön (1/0)
+- `csengeto.log` – a csengő naplója
+- `csenget.py` – a háttérfolyamat; a felület indítja/állítja le
