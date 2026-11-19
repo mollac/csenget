@@ -1,6 +1,7 @@
 # Csengő vezérlőpult
 
 Színes termináls felület (TUI) az iskolai csengő kezeléséhez.
+![image](csengeto.png)
 
 ## Telepítés
 
